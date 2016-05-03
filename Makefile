@@ -20,7 +20,7 @@ do:
 	-git pull ${PULLADDR}
 	@sh run_tests.sh
 
-all: commands formats tools io asm anal esil tools archos
+all: commands formats tools io asm anal esil tools archos endian
 
 archos:
 	@$(MAKE) -C t.archos
@@ -32,6 +32,9 @@ commands:
 
 tools:
 	@sh run_tests.sh t.tools
+
+endian:
+	@sh run_tests.sh t/endian
 
 io:
 	@sh run_tests.sh t.io

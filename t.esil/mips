@@ -1438,6 +1438,7 @@ EXPECT='0xfffff257
 run_test
 
 NAME="negative mem reference"
+BROKEN=1
 ARGS='-m 0x410984'
 FILE=malloc://0x200
 CMDS='
