@@ -1,6 +1,14 @@
 #!/bin/sh
 for a in . .. ../.. ; do [ -e $a/tests.sh ] && . $a/tests.sh ; done
 
+NAME='rahash2 -a entropy'
+CMDS='!rahash2 -a entropy ../../bins/elf/analysis/hello-linux-x86_64'
+BROKEN=
+EXPECT='../../bins/elf/analysis/hello-linux-x86_64: 0x00000000-0x00001a35 entropy: 3.27819072
+'
+
+run_test
+
 NAME='rahash2 -a md5'
 CMDS='!rahash2 -a md5 ../../bins/elf/analysis/hello-linux-x86_64'
 BROKEN=
