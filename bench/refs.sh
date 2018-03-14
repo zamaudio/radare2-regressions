@@ -1,9 +1,4 @@
 #!/bin/sh
-printf "x86.cs   "
-r2 -qa x86 -c?t/r /bin/ls
-
-printf "x86.udis "
-r2 -qa x86.udis -c?t/r /bin/ls
 
 #---
 printf "arm.cs   "
