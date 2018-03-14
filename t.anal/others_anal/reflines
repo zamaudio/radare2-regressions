@@ -331,3 +331,23 @@ EXPECT='/ (fcn) fcn.00012740 76
 \      `--> 0x00012787      call sym.imp.__stack_chk_fail
 '
 run_test
+
+NAME="⁝ and XREF cmt"
+FILE=../../bins/elf/strenc-ctrlchars
+CMDS='e scr.utf8=true
+e asm.bytes=false
+s main
+af
+s sym.imp.puts
+?e
+pd 3
+'
+EXPECT='
+┌ (fcn) sym.imp.puts 6
+│   sym.imp.puts ();
+│       ⁝   ; CALL XREF from 0x00400406 (sym.main)
+└       ⁝   0x004003f0      jmp qword reloc.puts                       ; [0x601018:8]=0x4003f6
+        ⁝   0x004003f6      push 0
+        └─< 0x004003fb      jmp 0x4003e0
+'
+run_test
