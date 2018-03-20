@@ -116,15 +116,13 @@ format.wasm:
 	$(SHELL) run_tests.sh t.formats/wasm
 
 
-tools: rabin2 radiff2 ragg2 ragg2-cc rahash2 rasm2 rax2 r2
+tools: rabin2 radiff2 ragg2 rahash2 rasm2 rax2 r2
 rabin2:
 	$(SHELL) run_tests.sh t.tools/rabin2
 radiff2:
 	$(SHELL) run_tests.sh t.tools/radiff2
 ragg2:
 	$(SHELL) run_tests.sh t.tools/ragg2
-ragg2-cc:
-	$(SHELL) run_tests.sh t.tools/ragg2-cc
 rahash2:
 	$(SHELL) run_tests.sh t.tools/rahash2
 rasm2:
