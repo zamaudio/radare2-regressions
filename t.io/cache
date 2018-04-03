@@ -153,3 +153,23 @@ EXPECT='- offset -   0 1  2 3  4 5  6 7  8 9  A B  C D  E F  0123456789ABCDEF
 0x00000011  0000 0000 0000 0000 0000 0000 0000 00    ...............
 '
 run_test
+
+# Cache undo.
+NAME='io.cache: cache write, cache undo'
+FILE=malloc://1024
+ARGS=
+CMDS='
+e io.cache=1
+w aa     
+w b
+p8 2
+wc-
+p8 2
+wc- 
+p8 2
+'
+EXPECT='6261
+6161
+0000
+'
+run_test
