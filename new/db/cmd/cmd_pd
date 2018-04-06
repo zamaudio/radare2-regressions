@@ -479,7 +479,7 @@ EXPECT='            0x00402a5f      bfdf4f4100     mov edi, str.COLUMNS        ;
             0x00402a5f      bfdf4f4100     mov edi, 0x414fdf           ; str.COLUMNS ; "COLUMNS"
 '
 RUN
-NAME=asm.emu.strinvert
+NAME=asm.emu.strinv
 FILE=../bins/elf/redpill
 CMDS=<<EXPECT
 e scr.color=1
