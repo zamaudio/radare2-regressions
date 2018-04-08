@@ -92,14 +92,11 @@ FILE=-
 IGNORE_ERR=1
 ARGS=
 CMDS='ax 10 20
-axk
+axq
 ax-10 20
-axk
+axq
 '
-EXPECT='ref.unk.0x14=0xa
-xref.unk.0xa=0x14
-types=code.jmp,code.call,data.mem,data.string
-types=code.jmp,code.call,data.mem,data.string
+EXPECT='0x0000000a -> 0x00000014  unk
 '
 run_test
 
@@ -110,14 +107,11 @@ IGNORE_ERR=1
 ARGS=
 CMDS='s 20
 ax 10
-axk
+axq
 ax-10
-axk
+axq
 '
-EXPECT='ref.unk.0x14=0xa
-xref.unk.0xa=0x14
-types=code.jmp,code.call,data.mem,data.string
-types=code.jmp,code.call,data.mem,data.string
+EXPECT='0x0000000a -> 0x00000014  unk
 '
 run_test
 
@@ -222,25 +216,18 @@ FILE=-
 ARGS=
 CMDS='
 ax 10 20
-axk
+axq
 ax- 10
-axk
+axq
 ax 10 20
 ax 30 40
-axk
+axq
 ax-*
-axk
+axq
 '
-EXPECT='ref.unk.0x14=0xa
-xref.unk.0xa=0x14
-types=code.jmp,code.call,data.mem,data.string
-types=code.jmp,code.call,data.mem,data.string
-ref.unk.0x28=0x1e
-ref.unk.0x14=0xa
-xref.unk.0xa=0x14
-xref.unk.0x1e=0x28
-types=code.jmp,code.call,data.mem,data.string
-types=code.jmp,code.call,data.mem,data.string
+EXPECT='0x0000000a -> 0x00000014  unk
+0x0000001e -> 0x00000028  unk
+0x0000000a -> 0x00000014  unk
 '
 run_test
 
