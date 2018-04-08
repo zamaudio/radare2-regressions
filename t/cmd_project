@@ -305,7 +305,7 @@ run_test
 
 NAME='Delete a saved project and used directory (with Pd)'
 FILE='../bins/elf/analysis/main'
-BROKEN=1
+BROKEN=
 ARGS='-n'
 CMDS='e dir.projects = /tmp/
 Ps blah > /dev/null
@@ -319,7 +319,7 @@ run_test
 
 NAME='Delete a saved project and used directory (with P-)'
 FILE='../bins/elf/analysis/main'
-BROKEN=1
+BROKEN=
 ARGS='-n'
 CMDS='e dir.projects = /tmp/
 Ps blah > /dev/null
