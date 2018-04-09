@@ -1,4 +1,4 @@
-VERSION=1.4.0-git
+VERSION=2.5.0
 DESTDIR?=/
 PREFIX?=/usr/local
 BINDIR=$(DESTDIR)/$(PREFIX)/bin
