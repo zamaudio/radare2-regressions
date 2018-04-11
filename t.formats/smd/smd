@@ -42,27 +42,28 @@ FILE=../../bins/smd/LiquidSpaceDodgerV3.bin
 ARGS=''
 CMDS="isq"
 EXPECT='0x00000000 0 rom_start
-0xf8720200 0 rom_end
-0x0000ff00 0 ram_start
-0xffffff00 0 ram_end
+0x000272f8 0 rom_end
+0x00ff0000 0 ram_start
+0x00ffffff 0 ram_end
 0x00fffff0 0 SSP
 0x00000200 0 Reset
 0x00001300 0 BusErr
-0x0000130c 0 InvOpCode
-0x000012a0 0 DivBy0
-0x000012ac 0 Check
-0x000012b8 0 TrapV
-0x000012c4 0 GPF
-0x000012d0 0 Trace
-0x000012dc 0 Reserv0
-0x000012e8 0 Reserv1
-0x000012f4 0 Reserv2
-0x00001294 0 Reserv3
-0x444f4e27 0 Reserv4
-0x54204c4f 0 BadInt
-0x4f4b2041 0 Reserv10
-0x54205448 0 Reserv11
-0x49532100 0 Reserv12
+0x0000130c 0 AdrErr
+0x000012a0 0 InvOpCode
+0x000012ac 0 DivBy0
+0x000012b8 0 Check
+0x000012c4 0 TrapV
+0x000012d0 0 GPF
+0x000012dc 0 Trace
+0x000012e8 0 Reserv0
+0x000012f4 0 Reserv1
+0x00001294 0 Reserv2
+0x444f4e27 0 Reserv3
+0x54204c4f 0 Reserv4
+0x4f4b2041 0 BadInt
+0x54205448 0 Reserv10
+0x49532100 0 Reserv11
+0x00001294 0 Reserv12
 0x00001294 0 Reserv13
 0x00001294 0 Reserv14
 0x00001294 0 Reserv15
@@ -72,10 +73,10 @@ EXPECT='0x00000000 0 rom_start
 0x00001294 0 IRQ1
 0x00001294 0 EXT
 0x00001294 0 IRQ3
-0x00001294 0 HBLANK
-0x00000bb2 0 IRQ5
-0x00001294 0 VBLANK
-0x00000bb8 0 IRQ7
+0x00000bb2 0 HBLANK
+0x00001294 0 IRQ5
+0x00000bb8 0 VBLANK
+0x00001294 0 IRQ7
 0x00001294 0 Trap0
 0x00001294 0 Trap1
 0x00001294 0 Trap2
@@ -116,17 +117,17 @@ NAME="sega megadrive rom entrypoint"
 FILE=../../bins/smd/LiquidSpaceDodgerV3.bin
 ARGS=''
 CMDS="ie~vadd"
-EXPECT='vaddr=0x00010100 paddr=0x00010100 baddr=0xffffffffffffffff laddr=0x00000000 haddr=-1 type=program
+EXPECT='vaddr=0x00000200 paddr=0x00000200 baddr=0xffffffffffffffff laddr=0x00000000 haddr=-1 type=program
 '
 
 run_test
 
 NAME="sega megadrive rom maps and printing"
 FILE=../../bins/smd/LiquidSpaceDodgerV3.bin
-BROKEN=1
+BROKEN=
 ARGS=''
 CMDS="pxw 4 @ 0x10100"
-EXPECT='0x00010100  0xa1003910                                   .9..
+EXPECT='0x00010100  0x13745300                                   .St.
 '
 
 run_test
