@@ -14,7 +14,8 @@ ARGS="-a x86 -b64"
 CMDS='
 wx 4889e5b8ffff000089c2c1ea1f01d0;aea 5
 '
-EXPECT=' A: rsp rbp eax rax edx rdx cf zf pf sf of
+EXPECT=' I: rsp rax rdx
+ A: rsp rbp eax rax edx rdx cf zf pf sf of
  R: rsp rax eax rdx edx
  W: rbp eax rax edx rdx cf zf pf sf of
 NW: rsp
@@ -40,6 +41,11 @@ EXPECT='{
     "pf",
     "sf",
     "of"
+  ],
+  "I": [
+    "rsp",
+    "rax",
+    "rdx"
   ],
   "R": [
     "rsp",
@@ -73,7 +79,8 @@ ARGS="-a x86 -b64"
 CMDS='
 wx 4889e5b8ffff000089c2c1ea1f01d0;aeA 15
 '
-EXPECT=' A: rsp rbp eax rax edx rdx cf zf pf sf of
+EXPECT=' I: rsp rax rdx
+ A: rsp rbp eax rax edx rdx cf zf pf sf of
  R: rsp rax eax rdx edx
  W: rbp eax rax edx rdx cf zf pf sf of
 NW: rsp
