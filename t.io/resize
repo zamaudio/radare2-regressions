@@ -18,7 +18,7 @@ i~^size[1]
 r+6
 i~^size[1]
 '
-EXPECT='0x0
+EXPECT='0
 0xa
 0x4
 0xa
@@ -40,7 +40,7 @@ w hello world
 i~^size[1]
 psz
 '
-EXPECT='0x0
+EXPECT='0
 0x3
 0xb
 hello world
