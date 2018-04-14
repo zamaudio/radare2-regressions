@@ -62,6 +62,8 @@ FILE=-
 CMDS='t'
 EXPECT='char
 char *
+double
+float
 int
 int16_t
 int32_t
@@ -274,6 +276,8 @@ EXPECT_ERR="../bins/other/error.h:2: warning: #error your compiler doesn't have 
 "
 EXPECT='char
 char *
+double
+float
 int
 int16_t
 int32_t
@@ -310,6 +314,8 @@ t addr
 '
 EXPECT='char
 char *
+double
+float
 int
 int16_t
 int32_t
