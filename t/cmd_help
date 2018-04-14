@@ -254,7 +254,17 @@ NAME="? 1;?v"
 FILE=--
 ARGS=
 CMDS="? 1;?v"
-EXPECT='1 0x1 01 1 0000:0001 1 "\x01" 0b00000001 1.0 1.000000f 1.000000 0t1
+EXPECT='hex     0x1
+octal   01
+unit    1
+segment 0000:0001
+int32   1
+string  "\x01"
+binary  0b00000001
+fvalue: 1.0
+float:  0.000000f
+double: 0.000000
+trits   0t1
 1
 '
 run_test
@@ -263,7 +273,17 @@ NAME="? 0;?v"
 FILE=--
 ARGS=
 CMDS="? 0;?v"
-EXPECT='0 0x0 00 0 0000:0000 0 "\0" 0b00000000 0.0 0.000000f 0.000000 0t0
+EXPECT='hex     0x0
+octal   00
+unit    0
+segment 0000:0000
+int32   0
+string  "\0"
+binary  0b00000000
+fvalue: 0.0
+float:  0.000000f
+double: 0.000000
+trits   0t0
 0
 '
 run_test
@@ -272,7 +292,17 @@ NAME="? -1"
 FILE=--
 ARGS=
 CMDS="? -1"
-EXPECT='-1 0xffffffffffffffff 01777777777777777777777 17179869184.0G fffff000:0fff -1 "\xff\xff\xff\xff\xff\xff\xff\xff" 0b1111111111111111111111111111111111111111111111111111111111111111 -1.0 -1.000000f -1.000000 0t11112220022122120101211020120210210211220
+EXPECT='hex     0xffffffffffffffff
+octal   01777777777777777777777
+unit    17179869184.0G
+segment fffff000:0fff
+int64   -1
+string  "\xff\xff\xff\xff\xff\xff\xff\xff"
+binary  0b1111111111111111111111111111111111111111111111111111111111111111
+fvalue: -1.0
+float:  nanf
+double: nan
+trits   0t11112220022122120101211020120210210211220
 '
 run_test
 
@@ -280,6 +310,16 @@ NAME="? 2*1.5"
 FILE=--
 ARGS=
 CMDS="? 2*1.5"
-EXPECT='2 0x2 02 2 0000:0002 2 "\x02" 0b00000010 3.0 3.000000f 3.000000 0t2
+EXPECT='hex     0x2
+octal   02
+unit    2
+segment 0000:0002
+int32   2
+string  "\x02"
+binary  0b00000010
+fvalue: 3.0
+float:  0.000000f
+double: 0.000000
+trits   0t2
 '
 run_test
