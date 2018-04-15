@@ -780,3 +780,64 @@ EXPECT='            0x00000000      15008052       movz w21, 0
         ,=< 0x0000001c      35000035       cbnz w21, 0x20              ; likely
 '
 run_test
+
+NAME="rev 64-bit register"
+FILE=malloc://0x200
+BROKEN=
+CMDS='
+e asm.arch=arm
+e asm.bits=64
+wx 200cc0da #rev x0, x1
+aer x1=0x1122334455667788
+aes
+aer x0
+'
+EXPECT='0x8877665544332211
+'
+run_test
+
+NAME="rev 32-bit register"
+FILE=malloc://0x200
+BROKEN=
+CMDS='
+e asm.arch=arm
+e asm.bits=64
+wx 2008c05a  #rev w0, w1
+aer w1=0x11223344
+aes
+aer w0
+'
+EXPECT='0x44332211
+'
+run_test
+
+NAME="rev16 64-bit register"
+FILE=malloc://0x200
+BROKEN=
+CMDS='
+e asm.arch=arm
+e asm.bits=64
+wx 2004c0da  #rev16 x0, x1
+aer x1=0x1122334455667788
+aes
+aer x0
+'
+EXPECT='0x2211443366558877
+'
+run_test
+
+NAME="rev16 32-bit register"
+FILE=malloc://0x200
+BROKEN=
+CMDS='
+e asm.arch=arm
+e asm.bits=64
+wx 2004c05a  #rev16 w0, w1
+aer w1=0x11223344
+aes
+aer x0
+'
+EXPECT='0x22114433
+'
+run_test
+
