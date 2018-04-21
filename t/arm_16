@@ -29,6 +29,4 @@ BITS=16
 
 # Expected to fail
 test_invalid "${PLUGIN}" "b gh"
-test_invalid "${PLUGIN}" "lsr r15, r5, 2"
-test_invalid "${PLUGIN}" "lsr r2, r15, 2"
 test_invalid "${PLUGIN}" "lsr r2, r5, 33"
