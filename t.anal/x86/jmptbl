@@ -17,7 +17,7 @@ f~switch
 f~?case
 "
 EXPECT="0x1000011b5 1 switch.0x1000011b5
-72
+73
 "
 run_test
 
@@ -25,7 +25,7 @@ NAME="mac-ls switch count"
 FILE=../../bins/mach0/mac-ls
 ARGS='-e anal.jmptbl=true -A'
 CMDS="f~?case"
-EXPECT="81
+EXPECT="83
 "
 run_test
 
@@ -324,3 +324,24 @@ EXPECT='0x00401090 0x004010d2 00:0000 66 j 0x004010e8 f 0x004010d2
 '
 run_test
 
+
+NAME="ls_amd64 all switches"
+FILE=../../bins/jmptbl/ls_amd64
+ARGS='-e anal.jmptbl=true'
+CMDS='aaa
+CC. @@ switch
+'
+EXPECT='switch table (275 cases) at 0x4140b0
+switch table (5 cases) at 0x414088
+switch table (121 cases) at 0x413cc0
+switch table (54 cases) at 0x41a048
+switch table (54 cases) at 0x419e98
+switch table (54 cases) at 0x41a418
+switch table (54 cases) at 0x41a268
+switch table (127 cases) at 0x418e58
+switch table (11 cases) at 0x418e00
+switch table (123 cases) at 0x4196f0
+switch table (123 cases) at 0x419318
+switch table (10 cases) at 0x419dc0
+'
+run_test
