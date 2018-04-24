@@ -220,6 +220,20 @@ EXPECT='IMAGE_FILE_MACHINE_I386
 '
 run_test
 
+NAME='tt'
+BROKEN=
+FILE=-
+CMDS='
+"td typedef char FILE_NAME;"
+tt FILE_NAME
+"td typedef bool FLAG;"
+tt FLAG
+'
+EXPECT='char
+bool
+'
+run_test
+
 NAME='td struct'
 BROKEN=
 FILE=-
