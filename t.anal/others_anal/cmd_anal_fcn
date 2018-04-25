@@ -190,6 +190,17 @@ EXPECT='0x00001f50
 '
 run_test
 
+NAME='afr'
+FILE=../../bins/mach0/mach0-i386
+ARGS=
+CMDS='e anal.hasnext=0
+afr
+afl'
+EXPECT='0x00001f00    4 73           sym._bar
+0x00001f50    1 47           sym._foo
+0x00001f80    1 41           sym._main
+'
+run_test
 
 NAME='aF'
 FILE=../../bins/mach0/mach0-i386
@@ -197,8 +208,7 @@ ARGS=
 CMDS='e anal.hasnext=0
 aF
 afl'
-EXPECT='0x00001f50    1 47           sym._foo
-0x00001f80    1 41           sym._main
+EXPECT='0x00001f80    1 41           sym._main
 '
 run_test
 
