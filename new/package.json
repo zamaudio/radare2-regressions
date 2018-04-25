@@ -7,7 +7,6 @@
     "co": "*",
     "colors": "*",
     "diff": "*",
-    "promisify-node": "*",
     "r2pipe-promise": "*",
     "rc": "*",
     "semistandard": "^11.0.0",

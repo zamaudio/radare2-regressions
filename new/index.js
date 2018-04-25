@@ -1,6 +1,6 @@
 const co = require('co');
 const colors = require('colors/safe');
-const promisify = require('promisify-node');
+const promisify = require('util').promisify;
 const walk = require('walk').walk;
 const fs = promisify('fs');
 const jsdiff = require('diff');
