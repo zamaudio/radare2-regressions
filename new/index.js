@@ -2,7 +2,8 @@ const co = require('co');
 const colors = require('colors/safe');
 const promisify = require('util').promisify;
 const walk = require('walk').walk;
-const fs = promisify('fs');
+const fs = require('fs');
+const fsWriteFile = promisify(fs.writeFile);
 const jsdiff = require('diff');
 const tmp = require('tmp');
 const zlib = require('zlib');
@@ -215,7 +216,7 @@ class NewRegressions {
             // TODO much slower than just using -c
             test.tmpScript = yield createTemporaryFile();
             // TODO use yield here
-            yield fs.writeFile(test.tmpScript, test.cmdScript);
+            yield fsWriteFile(test.tmpScript, test.cmdScript);
             args.push('-i', test.tmpScript);
           } else {
             if (!test.cmds && test.cmdScript) {
