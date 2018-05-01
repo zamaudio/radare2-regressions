@@ -145,6 +145,9 @@ class NewRegressions {
             '-A', // configurable to AAA, or just A somehow
             test.path
           ];
+          if (process.env.APPVEYOR && process.env.ANSICON === undefined) {
+            process.env['ANSICON'] = '';
+          }
           test.birth = null;
           const child = spawn(r2bin, args);
           child.stdout.on('data', data => {
@@ -207,6 +210,9 @@ class NewRegressions {
           '-N',
           '-Q'
         ];
+        if (process.env.APPVEYOR && process.env.ANSICON === undefined) {
+          process.env['ANSICON'] = '';
+        }
         // append custom r2 args
         if (test.args && test.args.length > 0) {
           args.push(...test.args.split(' '));
