@@ -96,7 +96,7 @@ axq
 ax-10 20
 axq
 '
-EXPECT='0x0000000a -> 0x00000014  unk
+EXPECT='0x00000014 -> 0x0000000a  UNKNOWN
 '
 run_test
 
@@ -111,7 +111,7 @@ axq
 ax-10
 axq
 '
-EXPECT='0x0000000a -> 0x00000014  unk
+EXPECT='0x00000014 -> 0x0000000a  UNKNOWN
 '
 run_test
 
@@ -225,9 +225,9 @@ axq
 ax-*
 axq
 '
-EXPECT='0x0000000a -> 0x00000014  unk
-0x0000001e -> 0x00000028  unk
-0x0000000a -> 0x00000014  unk
+EXPECT='0x00000014 -> 0x0000000a  UNKNOWN
+0x00000014 -> 0x0000000a  UNKNOWN
+0x00000028 -> 0x0000001e  UNKNOWN
 '
 run_test
 
@@ -310,5 +310,16 @@ aae
 pd 1 @ 0x08048432
 '
 EXPECT='[36m|[0m [36m          [0m[32m0x08048432[0m      [37mlea[36m eax[0m,[36m [0m[33mstr.Hello_PIC[0m[36m[0m[0m
+'
+run_test
+
+NAME='axs'
+FILE=-
+ARGS=
+CMDS='
+axs 0x10
+axq
+'
+EXPECT='0x00000000 -> 0x00000010  STRING
 '
 run_test
