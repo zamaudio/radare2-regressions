@@ -18,7 +18,8 @@ aei
 aeim
 td int puts(char *s);
 aftm
-pdf~char *s?
+s 0x08048409
+pd 1~char *s?
 "
 EXPECT='1
 '
