@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const NewRegressions = require('..');
-
+console.error('Running the testsuite');
 const fs = require('fs');
 const jsdiff = require('diff');
 const colors = require('colors/safe');
