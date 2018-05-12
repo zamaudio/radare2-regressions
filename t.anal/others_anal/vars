@@ -6,14 +6,13 @@ for a in . .. ../.. ; do [ -e $a/tests.sh ] && . $a/tests.sh ; done
 NAME='afvt'
 FILE=../../bins/mach0/arg
 ARGS=
-BROKEN=!
 CMDS='s sym._call
 af
 afv
 '
 EXPECT='var int local_14h @ rbp-0x14
-arg int local_10h @ rbp-0x10
-arg int local_8h @ rbp-0x8
+var int local_10h @ rbp-0x10
+var int local_8h @ rbp-0x8
 '
 run_test
 
@@ -404,7 +403,7 @@ ARGS=
 CMDS='af
 afvb~?
 '
-EXPECT="14
+EXPECT="13
 "
 run_test
 
