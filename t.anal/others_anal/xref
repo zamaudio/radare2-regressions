@@ -52,9 +52,9 @@ ARGS=
 CMDS='
 aaa
 axt @ sym.imp.exit'
-EXPECT='sub.strlen_5b9 0x804866f [CALL] call sym.imp.exit
-sub.Password_Incorrect_524 0x804853d [CALL] call sym.imp.exit
+EXPECT='sub.Password_Incorrect_524 0x804853d [CALL] call sym.imp.exit
 sub.sscanf_542 0x80485ab [CALL] call sym.imp.exit
+sub.strlen_5b9 0x804866f [CALL] call sym.imp.exit
 '
 run_test
 
@@ -65,9 +65,9 @@ ARGS=
 CMDS='
 aaaa
 axt @ sym.imp.exit'
-EXPECT='sub.strlen_5b9 0x804866f [CALL] call sym.imp.exit
-sub.Password_Incorrect_524 0x804853d [CALL] call sym.imp.exit
+EXPECT='sub.Password_Incorrect_524 0x804853d [CALL] call sym.imp.exit
 sub.sscanf_542 0x80485ab [CALL] call sym.imp.exit
+sub.strlen_5b9 0x804866f [CALL] call sym.imp.exit
 '
 run_test
 
