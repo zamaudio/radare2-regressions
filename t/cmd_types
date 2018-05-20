@@ -198,12 +198,12 @@ t
 EXPECT=''
 run_test
 
-NAME='tb'
+NAME='teb'
 BROKEN=
 FILE=-
 CMDS='
 "td enum pe_machine { IMAGE_FILE_MACHINE_IA64=0x200, IMAGE_FILE_MACHINE_I386=0x14c };"
-tb pe_machine IMAGE_FILE_MACHINE_I386
+teb pe_machine IMAGE_FILE_MACHINE_I386
 '
 EXPECT='0x14c
 '
@@ -252,8 +252,8 @@ CMDS='
 "td enum v { t=0x123, p=0x321 };"
 te~?
 tk v
-tk v.t
-tk v.p
+tk enum.v.t
+tk enum.v.p
 '
 EXPECT='1
 enum
@@ -269,8 +269,8 @@ FILE=-
 CMDS='
 "td enum v { t=0x8000000000000001, p=0x8000000000000008 };"
 te~?
-tk v.t
-tk v.p
+tk enum.v.t
+tk enum.v.p
 '
 EXPECT='1
 0x8000000000000001
@@ -459,5 +459,35 @@ EXPECT='pf d[2]? x (bar)moo
    a : 0x0000000c = 0
    b : 0x00000010 = 0
 ]
+'
+run_test
+
+NAME='te <enum>'
+FILE='-'
+CMDS='"td enum Foo {COW=1,BAR=2};"
+te
+te Foo
+'
+EXPECT='Foo
+COW = 0x1
+BAR = 0x2
+'
+run_test
+
+NAME='te <enum> <value>'
+FILE='-'
+CMDS='"td enum Foo {COW=1,BAR=2};"
+te Foo 1
+'
+EXPECT='COW
+'
+run_test
+
+NAME='teb <enum> <name>'
+FILE='-'
+CMDS='"td enum Foo {COW=1,BAR=2};"
+teb Foo COW
+'
+EXPECT='0x1
 '
 run_test
