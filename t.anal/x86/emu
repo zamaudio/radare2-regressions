@@ -79,7 +79,7 @@ e emu.write=true
 e asm.bytes=0
 e asm.cmt.col=20
 e asm.lines=false
-e asm.fcnlines=false
+e asm.lines.fcn=false
 aa
 aeim
 s 0x00003cb8-0x30

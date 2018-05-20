@@ -1675,7 +1675,7 @@ af
 e asm.emu=true
 e emu.write=true
 e asm.lines=false
-e asm.fcnlines=false
+e asm.lines.fcn=false
 aei
 aeim
 pdf~0x00400828[7]
