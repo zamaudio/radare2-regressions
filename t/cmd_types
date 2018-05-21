@@ -491,3 +491,12 @@ teb Foo COW
 EXPECT='0x1
 '
 run_test
+
+NAME="tpx test"
+FILE='-'
+CMDS='"td struct foo {char* a; int b;}"
+tpx foo 4141414144141414141442001000000
+'
+EXPECT=' a : 0x00000000 = AAAAD.....B
+ b : 0x0000000c = 16
+'
