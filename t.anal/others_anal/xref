@@ -332,38 +332,69 @@ e asm.lines=false
 e asm.lines.fcn=false
 aar
 pd 1 @0x400730
-pd 1 @0x4005fe
+pd 1 @0x4007f0
 pd 1 @0x400610'
 EXPECT=';-- __libc_csu_fini:
 ; DATA XREF from 0x004005cf (entry0 + 15)
 0x00400730      f3c3           ret
-; CODE XREF from 0x004005fa (sym.call_gmon_start + 14)
-0x004005fe      4883c408       add rsp, 8
+; CODE XREF from 0x004007fd (sym.__do_global_ctors_aux + 45)
+0x004007f0      4883eb08       sub rbx, 8
 ;-- __do_global_dtors_aux:
 ; CALL XREF from 0x0040080c (section_end..text + 4)
 0x00400610      55             push rbp
 '
 run_test
 
-NAME='refs with aaa'
+NAME='refs with afr'
 FILE=../../bins/elf/crackme
 ARGS=
 CMDS='
 e asm.lines=false
 e asm.lines.fcn=false
-aaa
+e anal.cjmpref=true
+aa
+afr
 pd 1 @0x400730
-pd 1 @0x4005fe
+pd 1 @0x4007f0
 pd 1 @0x400610'
 EXPECT='(fcn) sym.__libc_csu_fini 2
   sym.__libc_csu_fini ();
 ; DATA XREF from 0x004005cf (entry0)
 0x00400730      f3c3           ret
-; CODE XREF from 0x004005fa (sym.call_gmon_start)
-0x004005fe      4883c408       add rsp, 8
+; CODE XREF from 0x004007fd (sym.__do_global_ctors_aux)
+0x004007f0      4883eb08       sub rbx, 8
 (fcn) sym.__do_global_dtors_aux 100
   sym.__do_global_dtors_aux ();
 ; CALL XREF from 0x0040080c (sym._fini)
 0x00400610      55             push rbp
+'
+run_test
+
+NAME='cjmp data refs with aar'
+FILE=malloc://10000
+CMDS='
+e asm.arch=8051
+e asm.lines=false
+e asm.lines.fcn=false
+wx 307401000022
+aar
+pd 1 @_idata+0x2e'
+EXPECT='; DATA XREF from 0x00000000 (unk)
+0x1000002e      ff             mov r7, a
+'
+run_test
+
+NAME='cjmp data refs with afr'
+FILE=malloc://10000
+CMDS='
+e asm.arch=8051
+e asm.lines=false
+e asm.lines.fcn=false
+wx 307401000022
+aa
+afr
+pd 1 @_idata+0x2e'
+EXPECT='; DATA XREF from 0x00000000 (fcn.00000000)
+0x1000002e      ff             mov r7, a
 '
 run_test
