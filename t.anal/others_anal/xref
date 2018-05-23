@@ -323,3 +323,47 @@ axq
 EXPECT='0x00000000 -> 0x00000010  STRING
 '
 run_test
+
+NAME='refs with aar'
+FILE=../../bins/elf/crackme
+ARGS=
+CMDS='
+e asm.lines=false
+e asm.lines.fcn=false
+aar
+pd 1 @0x400730
+pd 1 @0x4005fe
+pd 1 @0x400610'
+EXPECT=';-- __libc_csu_fini:
+; DATA XREF from 0x004005cf (entry0 + 15)
+0x00400730      f3c3           ret
+; CODE XREF from 0x004005fa (sym.call_gmon_start + 14)
+0x004005fe      4883c408       add rsp, 8
+;-- __do_global_dtors_aux:
+; CALL XREF from 0x0040080c (section_end..text + 4)
+0x00400610      55             push rbp
+'
+run_test
+
+NAME='refs with aaa'
+FILE=../../bins/elf/crackme
+ARGS=
+CMDS='
+e asm.lines=false
+e asm.lines.fcn=false
+aaa
+pd 1 @0x400730
+pd 1 @0x4005fe
+pd 1 @0x400610'
+EXPECT='(fcn) sym.__libc_csu_fini 2
+  sym.__libc_csu_fini ();
+; DATA XREF from 0x004005cf (entry0)
+0x00400730      f3c3           ret
+; CODE XREF from 0x004005fa (sym.call_gmon_start)
+0x004005fe      4883c408       add rsp, 8
+(fcn) sym.__do_global_dtors_aux 100
+  sym.__do_global_dtors_aux ();
+; CALL XREF from 0x0040080c (sym._fini)
+0x00400610      55             push rbp
+'
+run_test
