@@ -502,3 +502,59 @@ tpx foo 4141414144141414141442001000000
 EXPECT=' a : 0x00000000 = AAAAD.....B
  b : 0x0000000c = 16
 '
+run_test
+
+NAME="ta and arm"
+FILE='-'
+CMDS='e asm.arch = arm
+e asm.bits = 32
+wx 082090e5040081e5
+"td struct foo {int a; int b; int c;};"
+ta foo.c @ 0x00000000
+ta foo.b @ 0x00000004
+?e
+pd 2
+'
+EXPECT='
+            0x00000000      082090e5       ldr r2, [r0, foo.c]
+            0x00000004      040081e5       str r0, [r1, foo.b]
+'
+run_test
+
+NAME="ta and mips"
+FILE='-'
+CMDS='e asm.arch = mips
+wx 08007fac040053800800538c
+"td struct foo {int a; int b; int c;};"
+ta foo.c @ 0x00000000
+ta foo.c @ 0x00000008
+ta foo.b @ 0x00000004
+?e
+pd 3
+'
+EXPECT='
+            0x00000000      08007fac       sw ra, foo.c(v1)
+            0x00000004      04005380       lb s3, foo.b(v0)
+            0x00000008      0800538c       lw s3, foo.c(v0)
+'
+run_test
+
+NAME="struct offset for dst operand with ta"
+FILE='-'
+CMDS='e asm.bits = 32
+"td struct foo {int a; int b ; int c;}"
+wx 8b40048951048d500883780800
+?e
+ta foo.b @ 0x00000000
+ta foo.b @ 0x00000003
+ta foo.c @ 0x00000006
+ta foo.c @ 0x00000009
+pd 4
+'
+EXPECT='
+            0x00000000      8b4004         mov eax, dword [eax + foo.b] ; [0x4:4]=0x508d0451
+            0x00000003      895104         mov dword [ecx + foo.b], edx
+            0x00000006      8d5008         lea edx, [eax + foo.c]      ; 0x8
+            0x00000009      83780800       cmp dword [eax + foo.c], 0
+'
+run_test
