@@ -422,6 +422,8 @@ run_test
 NAME='tk - crash'
 FILE='-'
 CMDS="tk -!!!! d'B%CCCC!9!!!!_"
+EXPECT='0x0
+'
 run_test
 
 NAME='struct of struct with ts and pf'
