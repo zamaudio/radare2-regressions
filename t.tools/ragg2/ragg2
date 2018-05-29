@@ -86,7 +86,7 @@ EXPECT=''
 run_test
 
 NAME='ragg2c ../../bins/other/ragg2/hi.c'
-BROKEN=1
+BROKEN=
 CMDS='!ragg2 ../../bins/other/ragg2/hi.c | grep e9'
 EXPECT='e90800000048656c6c6f210a00bf01000000488d35ecffffffba07000000b8010000000f05b83c0000004030ff0f05c3
 '
