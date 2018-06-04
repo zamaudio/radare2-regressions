@@ -12,9 +12,8 @@ wx 9090
 ao 1~?
 ao 1
 p8 1
-ao 1~?
 '
-EXPECT='13
+EXPECT='14
 address: 0x0
 opcode: nop
 mnemonic: nop
@@ -23,13 +22,13 @@ id: 494
 bytes: 90
 refptr: 0
 size: 1
+sign: false
 type: nop
 esil: ,
 stack: null
 family: cpu
 stackop: null
 90
-13
 '
 run_test
 

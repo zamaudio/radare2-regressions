@@ -34,6 +34,7 @@ EXPECT='[
     "opcode": "xor eax, eax",
     "disasm": "xor eax, eax",
     "mnemonic": "xor",
+    "sign": false,
     "prefix": 0,
     "id": 334,
     "opex": {

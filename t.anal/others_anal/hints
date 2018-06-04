@@ -11,10 +11,10 @@ e asm.arch = x86
 e anal.arch = x86
 ao~?
 ahe test
-ao~?
+ao~esil
 '
-EXPECT='14
-14
+EXPECT='15
+esil: test
 '
 run_test
 
