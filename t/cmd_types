@@ -599,6 +599,7 @@ run_test
 NAME="taa with multiple struct"
 FILE='-'
 CMDS='e asm.comments = false
+e asm.flags = false
 "td struct bar {int x; int y; int z;};"
 "td struct foo {int a; int b; int c;};"
 wx 48C7C000010000488B5008488B480448C7C000020000488B5008488B48049090C3
@@ -621,5 +622,25 @@ EXPECT='
 |           0x0000001e      90             nop
 |           0x0000001f      90             nop
 \           0x00000020      c3             ret
+'
+run_test
+
+NAME="Comments and var in struct offset propagation"
+FILE=../bins/elf/struct_sample
+CMDS='aa
+s main
+"td struct Books {char  title[50];char  author[50]; char  subject[100];};"
+tl Books = 0x00177f18
+?e
+pdf~Books
+'
+EXPECT='
+|           ; var struct Books @ rbp-0xe0
+|           0x00000684      488d8520ffff.  lea rax, [Books]
+|           0x00000695      488910         mov qword [rax], rdx        ; Books.title
+|           0x00000698      488d8520ffff.  lea rax, [Books]
+|           0x000006ad      488908         mov qword [rax], rcx        ; Books.author
+|           0x000006b0      488d8520ffff.  lea rax, [Books]
+|           0x000006c5      488930         mov qword [rax], rsi        ; Books.subject
 '
 run_test
