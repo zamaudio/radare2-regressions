@@ -453,3 +453,19 @@ EXPECT='pxr $w @ebp+0xc
 pxr $w @ebp-0x10
 '
 run_test
+
+NAME='afvR and afvW test'
+FILE=../../bins/elf/crackme0x05
+CMDS='aa
+s main
+?e
+afvR
+afvW
+'
+EXPECT='
+ local_78h  0x8048577,0x804858a
+  local_4h  
+ local_78h  
+  local_4h  0x804857a
+'
+run_test
