@@ -644,3 +644,21 @@ EXPECT='
 |           0x000006c5      488930         mov qword [rax], rsi        ; Books.subject
 '
 run_test
+
+NAME="tl with ahr (return value hint)"
+FILE=../bins/elf/struct_2
+CMDS='aa
+"td struct Test { int a; int  b; char *c;};"
+s main
+ahr 0x00000597 @ 0x00000592
+tl Test = 0x00002020
+s 0x000005a8
+?e
+pd 3
+'
+EXPECT='
+|           0x000005a8      c70206000000   mov dword [edx], 6          ; Test.a
+|           0x000005ae      8b55f4         mov edx, dword [Test]
+|           0x000005b1      c74204070000.  mov dword [edx + Test.b], 7
+'
+run_test
