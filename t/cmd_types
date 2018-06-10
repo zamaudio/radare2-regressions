@@ -494,6 +494,24 @@ EXPECT='0x1
 '
 run_test
 
+NAME="tp with varname"
+FILE=../bins/elf/struct_sample
+CMDS='"td struct Books {char  title[50];char  author[50]; char  subject[100];};"
+aa
+s main
+aei
+aeim
+aecu 0x000006d5
+?e
+tp Books local_e0h
+'
+EXPECT='
+   title : 0x00177f18 = Radare2
+  author : 0x00177f4a = pancake
+ subject : 0x00177f7c = Reversing
+'
+run_test
+
 NAME="tpx test"
 FILE='-'
 CMDS='"td struct foo {char* a; int b;}"
