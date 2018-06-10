@@ -60,7 +60,6 @@ CMDS='
 ?v
 ?=
 ??
-?d
 ?e
 ?r
 ?y
@@ -77,8 +76,7 @@ CMDS='
 ?+
 ?-
 '
-EXPECT_ERR="Use: ?d [opcode]    to get the description of the opcode
-Whitespace expected after '?f'
+EXPECT_ERR="Whitespace expected after '?f'
 Virtual addresses not enabled!
 0.004711
 "
