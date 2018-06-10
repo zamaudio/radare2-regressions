@@ -2241,3 +2241,4 @@ a "mov word ptr [si+0x24],0x4" 6766c744240400
 a "mov word ptr [si+0x24],0x8" 6766c744240800
 a "mov word ptr [si+0x24],0xff04" 6766c7442404ff
 a "mov word ptr [si],0x24" 6766c7042400
+a "mov eax, [eax * 2 + 8]" 8b044508000000

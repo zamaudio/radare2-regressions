@@ -297,3 +297,9 @@ CMDS="!rasm2 -a x86 -b 64 'bswap rax;bswap rbx;bswap rcx;bswap rdx'"
 EXPECT='480fc8480fcb480fc9480fca
 '
 run_test
+
+NAME='rasm2 mov eax, [eax * 2 + 8]'
+CMDS="!rasm -b32 'mov eax, [eax * 2 + 8]'"
+EXPECT='8b044508000000
+'
+run_test
