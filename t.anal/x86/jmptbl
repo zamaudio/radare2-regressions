@@ -1,6 +1,15 @@
 #!/bin/sh
 for a in . .. ../.. ; do [ -e $a/tests.sh ] && . $a/tests.sh ; done
 
+NAME="calc switch table"
+FILE=../../bins/elf/calc.file
+ARGS='-e anal.jmptbl=true'
+CMDS="af@0x8049203
+f~?switch"
+EXPECT="7
+"
+run_test
+
 NAME="mac-ls switch count"
 FILE=../../bins/mach0/mac-ls
 ARGS='-e anal.jmptbl=true -A'
