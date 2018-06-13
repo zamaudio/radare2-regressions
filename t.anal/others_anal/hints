@@ -13,7 +13,7 @@ ao~?
 ahe test
 ao~esil
 '
-EXPECT='15
+EXPECT='16
 esil: test
 '
 run_test

@@ -23,6 +23,7 @@ refptr: 0
 size: 1
 sign: false
 type: upush
+cycles: 2
 esil: rbp,8,rsp,-=,rsp,=[8]
 stack: inc
 family: cpu
