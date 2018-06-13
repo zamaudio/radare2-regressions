@@ -680,3 +680,23 @@ EXPECT='
 |           0x000005b1      c74204070000.  mov dword [edx + Test.b], 7
 '
 run_test
+
+NAME="Basic union test"
+FILE=../bins/elf/union_sample
+CMDS='aa
+"td union Books {char  title[50];char  author[50]; char  subject[100];};"
+tu
+tu Books
+s main
+tl Books = 0x00177f88
+afv~Books
+s 0x000006d2
+pd 2
+'
+EXPECT='Books
+pf [50]z[50]z[100]z title author subject
+var union Books @ rbp-0x70
+|           0x000006d2      488d4590       lea rax, [Books]
+|           0x000006d6      4889c6         mov rsi, rax                ; Books
+'
+run_test
