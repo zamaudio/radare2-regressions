@@ -180,3 +180,23 @@ EXPECT='0x00400523
 '
 
 run_test
+
+NAME='dbg.dc+db'
+FILE=../../bins/elf/analysis/x86-helloworld-gcc
+ARGS=-d
+BROKEN=
+CMDS='e dbg.swstep=true
+e scr.null=true
+db entry0
+dc
+dc
+s entry0
+e scr.null=false
+p8 4
+'
+EXPECT='Hello world!
+31ed5e89
+'
+# IGNORE_ERR=1
+run_test
+
