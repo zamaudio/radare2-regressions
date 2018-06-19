@@ -485,7 +485,13 @@ class NewRegressions {
         tests = data.toString();
       }
       if (process.platform === 'win32') {
-        this.runTests(fileName, tests.replace(/\/dev\/null/g, 'nul').replace(/\r\n/g, '\n').split('\n'));
+        tests = tests.replace(/\/dev\/null/g, 'nul').replace(/\r\n/g, '\n').split('\n');
+        for (let i = 0; i < tests.length; i++) {
+          if (tests[i].startsWith('!') || tests[i].startsWith('CMDS=!')) {
+            tests[i] = tests[i].replace(/\${(\S+)}/g, '%$1%');
+          }
+        }
+        this.runTests(fileName, tests);
       } else {
         this.runTests(fileName, tests.split('\n'));
       }
